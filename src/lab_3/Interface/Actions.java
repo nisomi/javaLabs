@@ -112,9 +112,9 @@ public class Actions {
                 break;
             }
         }
-        infoDuel(firstDroid, secondDroid);
         return new Duel(firstDroid, secondDroid);
     }
+
 
     public static TeamBattle startTeamBattle(List<BasicDroid> listOfDroids) {
         List<BasicDroid> team1 = new ArrayList<>();
@@ -204,7 +204,6 @@ public class Actions {
                 }
             }
         }
-        infoTeamBattle(team1,team2,teamName1,teamName2);
         return new TeamBattle(teamName1, teamName2, team1, team2);
     }
 
@@ -255,21 +254,4 @@ public class Actions {
         }
     }
 
-    public static void infoDuel(BasicDroid droid1, BasicDroid droid2){
-        System.out.println(LINE);
-        System.out.println(TABS + ANSI_BLUE + "\t\t\t\t" + droid1 + " vs " +droid2 +ANSI_RESET);
-    }
-
-    public static void infoTeamBattle(List<BasicDroid> team1, List<BasicDroid> team2, String teamName1, String teamName2){
-        System.out.println(LINE);
-        System.out.print(TABS + ANSI_BLUE +  teamName1 + " : ");
-        for (BasicDroid droid:team1){
-            System.out.print(droid + " ");
-        }
-        System.out.print(TABS + ANSI_CYAN + teamName2 + " : ");
-        for (BasicDroid droid:team2){
-            System.out.print(droid + " ");
-        }
-        System.out.println(ANSI_RESET);
-    }
 }

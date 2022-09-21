@@ -43,6 +43,7 @@ public class DroidBattle {
                 case 3: {
                     if (listOfDroids.size()>=2) {
                         Duel battle = startDuel(listOfDroids);
+                        battle.getInfo();
                         System.out.println(LINE);
                         System.out.println(TABS + ANSI_BLUE + "\t\tthe duel starts   (⁰▿⁰)◜-ι═══════>" + ANSI_RESET);
                         System.out.println(TABS + ANSI_GREEN + "\t\t\t\t" + battle.droidVsDroid() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
@@ -56,6 +57,7 @@ public class DroidBattle {
                 case 4: {
                     if (listOfDroids.size()>=2) {
                         TeamBattle teamBattle = startTeamBattle(listOfDroids);
+                        teamBattle.getInfo();
                         System.out.println(LINE);
                         System.out.println(TABS + ANSI_BLUE + "\tthe team-battle starts Ｏ(｀_´)乂(｀_´ )Ｏ" + ANSI_RESET);
                         System.out.println(TABS + ANSI_BLUE + "\t\t\t\t" + teamBattle.teamVsTeam() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
