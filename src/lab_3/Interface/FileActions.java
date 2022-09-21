@@ -23,8 +23,12 @@ public class FileActions {
         FileOutputStream fileOutputStream = new FileOutputStream(FilePath);
         PrintStream fileOut = new PrintStream(fileOutputStream, false);
         System.setOut(fileOut);
+        System.out.println(LINE);
+        battle.getInfo();
+        System.out.println(LINE);
         System.out.println(TABS + ANSI_BLUE + "\t\tthe duel starts   (⁰▿⁰)◜-ι═══════>" + ANSI_RESET);
         System.out.println(TABS + ANSI_GREEN + "\t\t\t\t" + battle.droidVsDroid() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
+        System.out.println(LINE);
         fileOutputStream.flush();
         fileOut.flush();
         out.flush();
@@ -39,8 +43,12 @@ public class FileActions {
         FileOutputStream fileOutputStream = new FileOutputStream(FilePath);
         PrintStream stream = new PrintStream(fileOutputStream);
         System.setOut(stream);
+        System.out.println(LINE);
+        teamBattle.getInfo();
+        System.out.println(LINE);
         System.out.println(TABS + ANSI_BLUE + "\tthe team-battle starts Ｏ(｀_´)乂(｀_´ )Ｏ" + ANSI_RESET);
         System.out.println(TABS + ANSI_BLUE + "\t\t\t\t" + teamBattle.teamVsTeam() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
+        System.out.println(LINE);
         System.setOut(consoleStream);
         fileOutputStream.close();
         stream.close();
