@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import static lab_3.Interface.Actions.*;
 import static lab_3.Interface.ColorsAndStrings.*;
+import static lab_3.Interface.FileActions.*;
 
 public class DroidBattle {
     private static List<BasicDroid> listOfDroids;
