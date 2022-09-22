@@ -1,6 +1,7 @@
 package lab_3.Battles;
 
 import lab_3.Droids.BasicDroid;
+import lab_3.Droids.Healer;
 
 import java.util.Random;
 

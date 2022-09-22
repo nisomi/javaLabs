@@ -2,7 +2,8 @@ package lab_3.Battles;
 
 import lab_3.Droids.*;
 
-public class Fight {
+
+public abstract class Fight {
     public void fight(BasicDroid attacker, BasicDroid defender) {
         if (attacker.attack(defender) != 0) {
             if (attacker instanceof Healer) {
@@ -10,4 +11,6 @@ public class Fight {
             }
         }
     }
+
+    abstract public void getInfo();
 }

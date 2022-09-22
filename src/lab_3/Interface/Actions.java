@@ -103,7 +103,7 @@ public class Actions {
                 System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
             }
             else if (firstDroid instanceof Healer && listOfDroids.get(idSecondDroid - 1) instanceof Healer ) {
-                System.out.println(SHORT_TABS+ANSI_RED+"you can't choose two healers for a duel, because it will be an endless battle, you know (´>_●)メ(●_<)"+ANSI_RESET);
+                System.out.println("\t\t\t\t\t\t"+ANSI_RED+"you can't choose two healers for a duel, because it will be an endless battle, you know (´>_●)メ(●_<)"+ANSI_RESET);
                 allDroidsHealers(listOfDroids);
             }
             else if (idFirstDroid==idSecondDroid){
