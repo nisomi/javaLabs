@@ -6,7 +6,6 @@ import static lab_3.Interface.Tables.*;
 import lab_3.Battles.*;
 import lab_3.Droids.*;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -88,7 +87,10 @@ public class Actions {
         while (true) {
             System.out.print(TABS+ANSI_GREEN+"number of the first droid: "+ANSI_RESET);
             idFirstDroid = scanner.nextInt();
-            if (ifDroidExist(listOfDroids,idFirstDroid)){
+            if (ifDroidNotExist(listOfDroids,idFirstDroid)){
+                System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
+            }
+            else{
                 firstDroid = listOfDroids.get(idFirstDroid - 1);
                 break;
             }
@@ -97,8 +99,8 @@ public class Actions {
             showDroids(listOfDroids);
             System.out.print(TABS+ANSI_GREEN+"number of the second droid: "+ANSI_RESET);
             idSecondDroid = scanner.nextInt();
-            if (!ifDroidExist(listOfDroids,idSecondDroid)){
-                continue;
+            if (ifDroidNotExist(listOfDroids,idSecondDroid)){
+                System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
             }
             else if (firstDroid instanceof Healer && listOfDroids.get(idSecondDroid - 1) instanceof Healer ) {
                 System.out.println(SHORT_TABS+ANSI_RED+"you can't choose two healers for a duel, because it will be an endless battle, you know (´>_●)メ(●_<)"+ANSI_RESET);
@@ -139,74 +141,64 @@ public class Actions {
         System.out.println(TABS+ANSI_YELLOW+"now let's choose the droids for the first team - " + teamName1 + " (ㅅ´◡`)"+ANSI_RESET);
         int idDroid;
         int i = 1;
-        int healers=0;
         while (true) {
             System.out.print(TABS+ANSI_GREEN+"code of droid " + i + ": "+ANSI_RESET);
             idDroid = scanner.nextInt();
-            if (!ifDroidExist(listOfDroids,idDroid)){
-                continue;
+            if (ifDroidNotExist(listOfDroids,idDroid)){
+                System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
             }
             else if (team1.contains(listOfDroids.get(idDroid - 1))) {
                 System.out.println(TABS+ANSI_RED+"you already added this droid, so please choose another one (￣－￣)"+ANSI_RESET);
             }
-            else {
-                if ((listOfDroids.get(idDroid-1) instanceof Healer) && (healers==1)){
+            else if ((listOfDroids.get(idDroid-1) instanceof Healer) && (ifAlreadyHealerInTeam(team1))){
                     System.out.println(TABS+ANSI_RED+"sorry, you can't take more than one healer in the team, choose someone else  ╮(. ❛ ᴗ ❛.)╭"+ANSI_RESET);
                     allDroidsHealers(listOfDroids);
                     showDroids(listOfDroids);
-                }
-                else {
-                    team1.add(listOfDroids.get(idDroid - 1));
-                    i++;
-                    if (i > num) {
-                        break;
-                    }
-                    if (listOfDroids.get(idDroid-1) instanceof Healer)
-                        healers++;
+            }
+            else {
+                team1.add(listOfDroids.get(idDroid - 1));
+                i++;
+                if (i > num) {
+                    break;
                 }
             }
         }
+
         scanner.nextLine();
         System.out.print(TABS+ANSI_GREEN+"what do you call the second team?: "+ANSI_RESET);
         teamName2 = scanner.nextLine();
         showDroids(listOfDroids);
         System.out.println(TABS+ANSI_YELLOW+"now let's choose the droids for the second team - " + teamName2 + " (ㅅ´◡`)"+ANSI_RESET);
         i = 1;
-        healers=0;
         while (true) {
             System.out.print(TABS+ANSI_GREEN+"code of droid " + i + ": "+ANSI_RESET);
             idDroid = scanner.nextInt();
-            if (!ifDroidExist(listOfDroids,idDroid)){
-                continue;
+            if (ifDroidNotExist(listOfDroids,idDroid)){
+                System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
             }
             else if (team2.contains(listOfDroids.get(idDroid - 1)) || team1.contains(listOfDroids.get(idDroid - 1))) {
                 System.out.println(TABS+ANSI_RED+"you already added this droid, so please choose another one (￣－￣)"+ANSI_RESET);
             }
-            else {
-                if ((listOfDroids.get(idDroid-1) instanceof Healer) && (((team1.size() == 1) && (team1.get(0) instanceof Healer))))  {
+            else if ((listOfDroids.get(idDroid-1) instanceof Healer) && (onlyHealerInTeam(team1)))  {
                     System.out.println(ANSI_RED + "\t\t\t\t\tyou can't choose only two healers for a team battle, because it will be an endless battle (´>_●)メ(●_<)" + ANSI_RESET);
                     allDroidsHealersTeam(listOfDroids,team1);
                     showDroids(listOfDroids);
-                    }
-                else if ((listOfDroids.get(idDroid-1) instanceof Healer) && (healers==1))  {
+            }
+            else if ((listOfDroids.get(idDroid-1) instanceof Healer) && ifAlreadyHealerInTeam(team2))  {
                     System.out.println(TABS + ANSI_RED + "sorry, you can't take more than one healer in the team, choose someone else   ╮(. ❛ ᴗ ❛.)╭" + ANSI_RESET);
                     allDroidsHealersTeam(listOfDroids,team1);
                     showDroids(listOfDroids);
-                }
-                else {
-                    team2.add(listOfDroids.get(idDroid - 1));
-                    i++;
-                    if (i > num) {
-                        break;
-                    }
-                    if (listOfDroids.get(idDroid-1) instanceof Healer)
-                        healers++;
+            }
+            else {
+                team2.add(listOfDroids.get(idDroid - 1));
+                i++;
+                if (i > num) {
+                    break;
                 }
             }
         }
         return new TeamBattle(teamName1, teamName2, team1, team2);
     }
-
 
     public static void restoreHP(List<BasicDroid> listOfDroids) {
         for (BasicDroid droid : listOfDroids) {
@@ -216,13 +208,25 @@ public class Actions {
         }
     }
 
-    public static boolean ifDroidExist(List<BasicDroid> listOfDroids, int idDroid) {
-        if ((idDroid > listOfDroids.size()) || ((idDroid < 0))) {
-            System.out.println(TABS + ANSI_RED + "looks like i can't find that droid, try again (￣－￣)" + ANSI_RESET);
-            return false;
-        }
-        return true;
+    public static boolean ifDroidNotExist(List<BasicDroid> listOfDroids, int idDroid) {
+        return (idDroid >= listOfDroids.size()) && ((idDroid <= 0));
     }
+
+    public static boolean ifAlreadyHealerInTeam(List<BasicDroid> listOfDroids){
+        int healers = 0;
+        for (BasicDroid droid:listOfDroids){
+            if (droid instanceof Healer) {
+                healers++;
+                break;
+            }
+        }
+        return healers == 1;
+    }
+
+    public static boolean onlyHealerInTeam (List<BasicDroid> team){
+        return (((team.size() == 1) && (team.get(0) instanceof Healer)));
+    }
+    
     public static void allDroidsHealers(List<BasicDroid> listOfDroids){
         int healers = 0;
         for (BasicDroid droid:listOfDroids){

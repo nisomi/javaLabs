@@ -1,6 +1,5 @@
 package lab_3.Interface;
-import lab_3.Battles.Duel;
-import lab_3.Battles.TeamBattle;
+import lab_3.Battles.*;
 import lab_3.Droids.BasicDroid;
 import java.io.IOException;
 import java.util.ArrayList;

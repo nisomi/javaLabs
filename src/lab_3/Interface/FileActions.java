@@ -7,10 +7,8 @@ import lab_3.Droids.BasicDroid;
 import java.io.*;
 import java.util.List;
 
-import static lab_3.Interface.Actions.startDuel;
-import static lab_3.Interface.Actions.startTeamBattle;
+import static lab_3.Interface.Actions.*;
 import static lab_3.Interface.ColorsAndStrings.*;
-import static lab_3.Interface.ColorsAndStrings.ANSI_RESET;
 
 public class FileActions {
     public final static String FilePath = "E:\\2 курс\\1 сем\\ПП\\DroidBattle.txt";

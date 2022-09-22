@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import static lab_3.Interface.ColorsAndStrings.*;
-import static lab_3.Interface.ColorsAndStrings.ANSI_RESET;
 
 public class TeamBattle extends Fight {
     private String attackName;
@@ -71,7 +70,7 @@ public class TeamBattle extends Fight {
         for (BasicDroid droid:attackers){
             System.out.print(droid + " ");
         }
-        System.out.print(TABS + ANSI_CYAN + defendName + " : ");
+        System.out.print(TABS + ANSI_CYAN + "\n" + defendName + " : ");
         for (BasicDroid droid:defenders){
             System.out.print(droid + " ");
         }
