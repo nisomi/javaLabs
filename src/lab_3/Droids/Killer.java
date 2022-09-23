@@ -13,6 +13,10 @@ public class Killer extends BasicDroid{
         super(name,HP,DAMAGE);
     }
 
+    public String getType(){
+        return "killer";
+    }
+
     @Override
     public int attack(BasicDroid droid) {
         Random random = new Random();

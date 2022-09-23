@@ -14,4 +14,8 @@ public class Shield extends BasicDroid{
         this.hpCurrent -= hit /SHIELD;
         return hit;
     }
+
+    public String getType(){
+        return "shield";
+    }
 }

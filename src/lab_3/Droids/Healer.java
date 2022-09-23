@@ -12,6 +12,10 @@ public class Healer extends BasicDroid{
         super(name,HP,DAMAGE);
     }
 
+    public String getType(){
+        return "healer";
+    }
+
     public void heal(Fight battle) {
         int healHp = this.hpCurrent / 3;
         int realHealHp = 0;

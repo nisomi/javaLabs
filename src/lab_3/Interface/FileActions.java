@@ -16,11 +16,8 @@ public class FileActions {
 
     public static void saveDuelToFile(List<BasicDroid> listOfDroids) throws IOException {
         Duel battle = startDuel(listOfDroids);
-        PrintWriter out = new PrintWriter(new FileWriter(FilePath));
         PrintStream console = System.out;
-        console.flush();
-        FileOutputStream fileOutputStream = new FileOutputStream(FilePath);
-        PrintStream fileOut = new PrintStream(fileOutputStream, false);
+        PrintStream fileOut = new PrintStream(FilePath);
         System.setOut(fileOut);
         System.out.println(LINE);
         battle.getInfo();
@@ -28,21 +25,16 @@ public class FileActions {
         System.out.println(TABS + ANSI_BLUE + "\t\tthe duel starts   (⁰▿⁰)◜-ι═══════>" + ANSI_RESET);
         System.out.println(TABS + ANSI_GREEN + "\t\t\t\t" + battle.droidVsDroid() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
         System.out.println(LINE);
-        fileOutputStream.flush();
         fileOut.flush();
-        out.flush();
-        out.close();
+        fileOut.close();
         System.setOut(console);
         System.out.println(TABS+ANSI_GREEN+"successfully saved to a file ( o˘◡˘o)"+ANSI_RESET);
     }
 
     public static void saveTeamBattleToFile(List<BasicDroid> listOfDroids) throws IOException {
         TeamBattle teamBattle = startTeamBattle(listOfDroids);
-        PrintWriter out = new PrintWriter(new FileWriter(FilePath));
         PrintStream console = System.out;
-        console.flush();
-        FileOutputStream fileOutputStream = new FileOutputStream(FilePath);
-        PrintStream fileOut = new PrintStream(fileOutputStream, false);
+        PrintStream fileOut = new PrintStream(FilePath);
         System.setOut(fileOut);
         System.out.println(LINE);
         teamBattle.getInfo();
@@ -50,10 +42,8 @@ public class FileActions {
         System.out.println(TABS + ANSI_BLUE + "\tthe team-battle starts Ｏ(｀_´)乂(｀_´ )Ｏ" + ANSI_RESET);
         System.out.println(TABS + ANSI_BLUE + "\t\t\t\t" + teamBattle.teamVsTeam() + " won! ヽ(≧▿≦)ノ" + ANSI_RESET);
         System.out.println(LINE);
-        fileOutputStream.flush();
         fileOut.flush();
-        out.flush();
-        out.close();
+        fileOut.close();
         System.setOut(console);
         System.out.println(TABS+ANSI_GREEN+"successfully saved to a file ( o˘◡˘o)"+ANSI_RESET);
     }

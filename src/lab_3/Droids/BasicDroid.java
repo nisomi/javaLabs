@@ -9,6 +9,7 @@ public abstract class BasicDroid {
     protected int hpCurrent;
     protected int hpMax;
     protected int damage;
+    protected String type;
 
     public BasicDroid(String name, int hp, int damage) {
         this.name = name;
@@ -58,11 +59,15 @@ public abstract class BasicDroid {
         return hpCurrent >0;
     }
 
+    public String getType(){
+        return type;
+    }
+
     public int attack(BasicDroid droid) {
         Random random = new Random();
-        int damagePoints = 0;
-        damagePoints = random.nextInt(20) + this.damage - 20;
+        int damagePoints = random.nextInt(20) + this.damage - 20;
         int actualDamage = droid.receiveDamage(damagePoints);
+
         System.out.println(TABS+ANSI_YELLOW + droid + " got hit by " + this + " with " + damagePoints + " and damaged with " + actualDamage+" HP "+ANSI_RESET );
         if (droid.hpCurrent <= 0) {
             droid.hpCurrent = 0;

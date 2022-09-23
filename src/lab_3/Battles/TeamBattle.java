@@ -65,7 +65,6 @@ public class TeamBattle extends Fight {
     }
 
     public void getInfo(){
-        System.out.println(LINE);
         System.out.print(TABS + ANSI_BLUE +  attackName + " : ");
         for (BasicDroid droid:attackers){
             System.out.print(droid + " ");

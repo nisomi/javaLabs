@@ -36,7 +36,6 @@ public class Duel extends Fight{
     }
 
     public void getInfo(){
-        System.out.println(LINE);
         System.out.println(TABS + ANSI_BLUE + "\t\t\t\t" + attacker + " vs " +defender +ANSI_RESET);
     }
 }

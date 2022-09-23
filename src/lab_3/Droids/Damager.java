@@ -7,4 +7,8 @@ public class Damager extends BasicDroid {
     public Damager(String name) {
         super(name,HP,DAMAGE);
     }
+
+    public String getType(){
+        return "damager";
+    }
 }

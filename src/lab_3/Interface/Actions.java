@@ -63,18 +63,7 @@ public class Actions {
         printDroidsHeader();
         for (int i = 0; i < listOfDroids.size(); i++) {
             System.out.printf(TABS+"\t %3d    %-11s    ", (i + 1), listOfDroids.get(i).getName());
-            if (listOfDroids.get(i) instanceof Killer) {
-                System.out.println("killer");
-            }
-            else if (listOfDroids.get(i) instanceof Healer) {
-                System.out.println("healer");
-            }
-            else if (listOfDroids.get(i) instanceof Shield) {
-                System.out.println("shield");
-            }
-            else if (listOfDroids.get(i) instanceof Damager) {
-                System.out.println("damager");
-            }
+            System.out.println(listOfDroids.get(i).getType());
         }
     }
 
