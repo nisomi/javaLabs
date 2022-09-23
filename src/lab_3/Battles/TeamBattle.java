@@ -70,7 +70,7 @@ public class TeamBattle extends Fight {
         for (BasicDroid droid:attackers){
             System.out.print(droid + " ");
         }
-        System.out.print(TABS + ANSI_CYAN + "\n" + defendName + " : ");
+        System.out.print("\n"+TABS + ANSI_CYAN  + defendName + " : ");
         for (BasicDroid droid:defenders){
             System.out.print(droid + " ");
         }

@@ -15,6 +15,7 @@ public class Healer extends BasicDroid{
     public void heal(Fight battle) {
         int healHp = this.hpCurrent / 3;
         int realHealHp = 0;
+
         if ((battle instanceof Duel) && (this.hpCurrent != hpMax)) {
             this.hpCurrent += healHp;
             if (hpCurrent > HP) {
@@ -23,6 +24,7 @@ public class Healer extends BasicDroid{
             }
             System.out.println(TABS+ANSI_GREEN+name + " heal itself with " + realHealHp + " HP"+ANSI_RESET);
         }
+
         if (battle instanceof TeamBattle) {
             int droidsNum = ((TeamBattle) battle).getAttackers().size();
             int HealHpPerDroid = healHp / droidsNum;
